@@ -1,5 +1,3 @@
-import { Logo3DCard } from './logo-card.js';
-
 const WHATSAPP_NUMBER = '5511959134861';
 const WHATSAPP_MESSAGES = {
   'ola-geral': 'Olá! Conheci a LeadUp pelo site e gostaria de saber mais sobre Web Design e Tráfego Pago.',
@@ -249,6 +247,30 @@ function initContactForm() {
 /* ---------------------------------------------------------------------- */
 const INTRO_SEEN_KEY = 'leadup_intro_seen';
 
+function browserSupportsWebGL() {
+  try {
+    const canvas = document.createElement('canvas');
+    return !!(window.WebGLRenderingContext &&
+      (canvas.getContext('webgl2') || canvas.getContext('webgl')));
+  } catch (e) {
+    return false;
+  }
+}
+
+/**
+ * Three.js is vendored locally, but still loaded via dynamic import so a
+ * broken/slow module only degrades the 3D logo to its static fallback
+ * image — it never breaks WhatsApp links, navigation, or the contact
+ * form, which don't depend on it.
+ */
+let logoModulePromise = null;
+function loadLogoModule() {
+  if (!logoModulePromise) {
+    logoModulePromise = import('./logo3d.js');
+  }
+  return logoModulePromise;
+}
+
 function showSite() {
   document.getElementById('intro').classList.add('is-hidden');
   const site = document.getElementById('site');
@@ -256,18 +278,39 @@ function showSite() {
   document.body.style.overflow = '';
 }
 
-function initHeroLogo() {
-  const stage = document.getElementById('hero-stage');
-  const card = document.getElementById('hero-card');
-  if (!stage || !card) return;
-  const viewer = new Logo3DCard(stage, card, { autoIdle: true });
-  viewer.options.onClick = () => viewer.snapToFront();
+function showHeroFallback() {
+  const canvas = document.getElementById('hero-canvas');
+  const fallback = document.getElementById('hero-fallback-logo');
+  canvas.hidden = true;
+  fallback.hidden = false;
+}
+
+async function initHeroLogo() {
+  const canvas = document.getElementById('hero-canvas');
+  if (!canvas) return;
+
+  if (!browserSupportsWebGL()) {
+    showHeroFallback();
+    return;
+  }
+
+  try {
+    const { LogoViewer } = await loadLogoModule();
+    const viewer = new LogoViewer(canvas, {
+      autoIdle: true,
+      cameraZ: 5.2,
+      onClick: () => viewer.snapToFront(),
+    });
+    await viewer.init();
+  } catch (e) {
+    showHeroFallback();
+  }
 }
 
 function initIntro() {
   const intro = document.getElementById('intro');
-  const stage = document.getElementById('intro-stage');
-  const card = document.getElementById('intro-card');
+  const canvas = document.getElementById('intro-canvas');
+  const fallback = document.getElementById('intro-fallback-logo');
   const enterBtn = document.getElementById('intro-enter');
   const skipBtn = document.getElementById('intro-skip');
 
@@ -282,7 +325,11 @@ function initIntro() {
   document.body.style.overflow = 'hidden';
 
   let entered = false;
-  const viewer = new Logo3DCard(stage, card, { autoIdle: true });
+  let currentViewer = null;
+  // 'pending' while the 3D module/geometry are still loading, so an early
+  // click on "enter" doesn't get lost while nothing is wired up yet.
+  let mode = 'pending';
+  let enterRequested = false;
 
   const exitIntro = (animated) => {
     if (entered) return;
@@ -290,20 +337,76 @@ function initIntro() {
     const proceed = () => {
       sessionStorage.setItem(INTRO_SEEN_KEY, '1');
       showSite();
-      viewer.dispose();
+      if (currentViewer) currentViewer.dispose();
       initHeroLogo();
     };
-    if (animated) {
+    if (animated && currentViewer) {
       intro.style.pointerEvents = 'none';
-      viewer.playEnterTransition().then(proceed, proceed);
+      currentViewer.playEnterTransition(1100).then(proceed, proceed);
     } else {
       proceed();
     }
   };
 
-  viewer.options.onClick = () => exitIntro(true);
-  enterBtn.addEventListener('click', () => exitIntro(true));
+  // Always-available skip path, independent of whether the 3D module
+  // has finished loading yet.
   skipBtn.addEventListener('click', () => exitIntro(false));
+
+  const fallbackZoomThenExit = () => {
+    fallback.style.transition = 'transform 0.7s ease, opacity 0.7s ease';
+    fallback.style.transform = 'scale(6)';
+    fallback.style.opacity = '0';
+    setTimeout(() => exitIntro(false), 650);
+  };
+
+  const setFallbackMode = () => {
+    if (entered) return;
+    mode = 'fallback';
+    canvas.hidden = true;
+    fallback.hidden = false;
+    if (enterRequested) fallbackZoomThenExit();
+  };
+
+  // Single entry point for every way the user can say "enter": clicking
+  // the logo itself, the explicit button, or (once in fallback mode) the
+  // static image. If the 3D viewer isn't ready yet, remember the intent
+  // and honor it the instant it finishes loading instead of dropping it.
+  const activateEnter = () => {
+    if (mode === '3d') {
+      exitIntro(true);
+    } else if (mode === 'fallback') {
+      fallbackZoomThenExit();
+    } else {
+      enterRequested = true;
+    }
+  };
+
+  enterBtn.addEventListener('click', activateEnter);
+  fallback.addEventListener('click', activateEnter);
+
+  if (!browserSupportsWebGL()) {
+    setFallbackMode();
+    return;
+  }
+
+  loadLogoModule()
+    .then(({ LogoViewer }) => {
+      if (entered) return undefined;
+      const viewer = new LogoViewer(canvas, {
+        autoIdle: true,
+        cameraZ: 6.4,
+        fov: 34,
+        onClick: activateEnter,
+      });
+      currentViewer = viewer;
+      return viewer.init();
+    })
+    .then(() => {
+      if (entered || !currentViewer) return;
+      mode = '3d';
+      if (enterRequested) exitIntro(true);
+    })
+    .catch(() => setFallbackMode());
 }
 
 /* ---------------------------------------------------------------------- */

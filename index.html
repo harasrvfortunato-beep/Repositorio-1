@@ -47,16 +47,24 @@
   ]
 }
 </script>
+
+<script type="importmap">
+{
+  "imports": {
+    "three": "./js/vendor/three/three.module.min.js",
+    "three/addons/": "./js/vendor/three/addons/"
+  }
+}
+</script>
 </head>
 <body>
 
 <!-- ============ INTRO 3D EXPERIENCE ============ -->
 <div id="intro" class="intro" aria-label="Introdução da marca LEADUP">
-  <div class="logo3d-stage" id="intro-stage">
-    <div class="logo3d-card" id="intro-card">
-      <div class="logo3d-face logo3d-face--front"><img src="assets/leadup-logo-card.png" alt="LEADUP" width="1255" height="278"></div>
-      <div class="logo3d-face logo3d-face--back"><img src="assets/leadup-logo-card.png" alt="LEADUP" width="1255" height="278"></div>
-    </div>
+  <canvas id="intro-canvas" class="intro-canvas"></canvas>
+
+  <div class="intro-fallback-logo" id="intro-fallback-logo" hidden>
+    <img src="assets/leadup-logo-header.png" alt="LEADUP" width="480" height="240">
   </div>
 
   <div class="intro-ui">
@@ -134,12 +142,8 @@
 
         <div class="hero-stage reveal" data-reveal="right">
           <div class="stage-platform">
-            <div class="logo3d-stage" id="hero-stage">
-              <div class="logo3d-card" id="hero-card">
-                <div class="logo3d-face logo3d-face--front"><img src="assets/leadup-logo-card.png" alt="LEADUP" width="1255" height="278"></div>
-                <div class="logo3d-face logo3d-face--back"><img src="assets/leadup-logo-card.png" alt="LEADUP" width="1255" height="278"></div>
-              </div>
-            </div>
+            <canvas id="hero-canvas" class="hero-canvas"></canvas>
+            <img src="assets/leadup-logo-header.png" alt="LEADUP" class="hero-fallback-logo" id="hero-fallback-logo" hidden>
             <div class="platform-ring"></div>
           </div>
           <div class="stage-hint">
