@@ -1,113 +1,360 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Fogos de Artifício - Magia no Céu</title>
-  <link rel="stylesheet" href="style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>LEADUP | Web Design e Tráfego Pago</title>
+<meta name="description" content="Web Design e Tráfego Pago para empresas que querem construir uma presença digital profissional e gerar novas oportunidades.">
+<meta name="theme-color" content="#05070d">
+<link rel="canonical" href="https://leadup.com.br/">
+
+<!-- Open Graph -->
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="LEADUP">
+<meta property="og:title" content="LEADUP | Web Design e Tráfego Pago">
+<meta property="og:description" content="Sites que vendem. Tráfego que escala. Unimos design, performance e estratégia para levar o seu negócio para o próximo nível.">
+<meta property="og:image" content="assets/leadup-og.jpg">
+<meta property="og:locale" content="pt_BR">
+
+<!-- Twitter -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="LEADUP | Web Design e Tráfego Pago">
+<meta name="twitter:description" content="Sites que vendem. Tráfego que escala.">
+<meta name="twitter:image" content="assets/leadup-og.jpg">
+
+<link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+<link rel="apple-touch-icon" href="assets/leadup-logo-header.png">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="style.css">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ProfessionalService",
+  "name": "LEADUP",
+  "description": "Web Design e Tráfego Pago para empresas que querem construir uma presença digital profissional e gerar novas oportunidades.",
+  "slogan": "Sites que vendem. Tráfego que escala.",
+  "telephone": "+5511959134861",
+  "areaServed": "BR",
+  "url": "https://leadup.com.br/",
+  "makesOffer": [
+    { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Web Design" } },
+    { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Tráfego Pago" } }
+  ]
+}
+</script>
+
+<script type="importmap">
+{
+  "imports": {
+    "three": "./js/vendor/three/three.module.min.js",
+    "three/addons/": "./js/vendor/three/addons/"
+  }
+}
+</script>
 </head>
 <body>
 
-  <header class="hero">
-    <nav class="navbar">
-      <div class="logo">🎆 Fogos & Cia</div>
-      <ul class="nav-links">
-        <li><a href="#sobre">Sobre</a></li>
-        <li><a href="#tipos">Tipos</a></li>
-        <li><a href="#curiosidades">Curiosidades</a></li>
-        <li><a href="#seguranca">Segurança</a></li>
-        <li><a href="#contato">Contato</a></li>
-      </ul>
-    </nav>
-    <canvas id="fireworks-canvas"></canvas>
-    <div class="hero-content">
-      <h1>Fogos de Artifício</h1>
-      <p>A arte de colorir o céu com luz, som e emoção</p>
-      <a href="#sobre" class="btn">Saiba Mais</a>
+<!-- ============ INTRO 3D EXPERIENCE ============ -->
+<div id="intro" class="intro" aria-label="Introdução da marca LEADUP">
+  <canvas id="intro-canvas" class="intro-canvas"></canvas>
+
+  <div class="intro-fallback-logo" id="intro-fallback-logo" hidden>
+    <img src="assets/leadup-logo-fallback.png" alt="LEADUP" width="480" height="240">
+  </div>
+
+  <div class="intro-ui">
+    <p class="intro-hint">Arraste para girar</p>
+    <p class="intro-degrees">360°</p>
+    <button type="button" id="intro-enter" class="intro-enter" aria-label="Entrar no site LEADUP">
+      <span>Toque na logo para entrar</span>
+    </button>
+  </div>
+
+  <button type="button" id="intro-skip" class="intro-skip">Pular introdução</button>
+</div>
+
+<!-- ============ SITE ============ -->
+<div id="site" class="site" hidden>
+
+  <header class="header" id="header">
+    <div class="header-inner">
+      <a href="#inicio" class="brand" id="brand-home">
+        <img src="assets/leadup-logo-header.png" alt="LEADUP" class="brand-logo">
+      </a>
+
+      <nav class="nav" id="nav">
+        <ul class="nav-list">
+          <li><a href="#inicio" class="nav-link is-active">Início</a></li>
+          <li><a href="#servicos" class="nav-link">Serviços</a></li>
+          <li><a href="#portfolio" class="nav-link">Portfólio</a></li>
+          <li><a href="#sobre" class="nav-link">Sobre</a></li>
+          <li><a href="#contato" class="nav-link">Contato</a></li>
+        </ul>
+      </nav>
+
+      <a href="#" class="btn btn-primary btn-sm whatsapp-link" data-wa-msg="ola-geral" id="header-cta">
+        <span>Fale conosco</span>
+        <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </a>
+
+      <button type="button" class="menu-toggle" id="menu-toggle" aria-label="Abrir menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+
+    <div class="mobile-nav" id="mobile-nav">
+      <a href="#inicio" class="mobile-nav-link">Início</a>
+      <a href="#servicos" class="mobile-nav-link">Serviços</a>
+      <a href="#portfolio" class="mobile-nav-link">Portfólio</a>
+      <a href="#sobre" class="mobile-nav-link">Sobre</a>
+      <a href="#contato" class="mobile-nav-link">Contato</a>
+      <a href="#" class="btn btn-primary btn-block whatsapp-link" data-wa-msg="ola-geral">Fale conosco →</a>
     </div>
   </header>
 
-  <main>
-    <section id="sobre" class="section">
-      <h2>O que são Fogos de Artifício?</h2>
-      <p>
-        Fogos de artifício são dispositivos pirotécnicos utilizados para fins de entretenimento,
-        capazes de produzir efeitos visuais e sonoros no céu noturno. Feitos com pólvora e sais
-        metálicos que geram cores vibrantes ao serem queimados, eles são usados em celebrações
-        como Ano Novo, festas juninas, casamentos e eventos esportivos ao redor do mundo.
-      </p>
+  <main id="main-content">
+
+    <!-- ============ HERO ============ -->
+    <section id="inicio" class="hero">
+      <div class="hero-inner">
+        <div class="hero-copy reveal" data-reveal="left">
+          <p class="eyebrow">Estratégia Digital</p>
+          <h1 class="hero-title">
+            Sites que vendem.<br>
+            Tráfego que <span class="text-accent">escala.</span>
+          </h1>
+          <p class="hero-lead">
+            Unimos design, performance e estratégia para levar o seu negócio para o próximo nível.
+          </p>
+          <div class="hero-actions">
+            <a href="#" class="btn btn-primary whatsapp-link" data-wa-msg="comecar-agora">
+              <span>Comece agora</span>
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+            </a>
+            <a href="#portfolio" class="btn btn-outline">Ver portfólio</a>
+          </div>
+        </div>
+
+        <div class="hero-stage reveal" data-reveal="right">
+          <div class="stage-platform">
+            <canvas id="hero-canvas" class="hero-canvas"></canvas>
+            <img src="assets/leadup-logo-fallback.png" alt="LEADUP" class="hero-fallback-logo" id="hero-fallback-logo" hidden>
+            <div class="platform-ring"></div>
+          </div>
+          <div class="stage-hint">
+            <span class="drag-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M8 9l-4 3 4 3M16 9l4 3-4 3"/></svg>
+            </span>
+            Arraste para girar
+          </div>
+          <p class="stage-degrees">360°</p>
+        </div>
+      </div>
+
+      <div class="hero-ticker">
+        <p>TRANSFORMANDO IDEIAS EM RESULTADOS</p>
+        <p class="hero-ticker-brand">LEADUP</p>
+      </div>
     </section>
 
-    <section id="tipos" class="section alt">
-      <h2>Tipos de Fogos</h2>
-      <div class="cards">
-        <div class="card">
-          <h3>🎇 Rojões</h3>
-          <p>Sobem ao céu com um assobio característico e explodem em um estampido sonoro.</p>
+    <!-- ============ SERVIÇOS ============ -->
+    <section id="servicos" class="section services">
+      <div class="section-head reveal">
+        <p class="eyebrow">O que fazemos</p>
+        <h2 class="section-title">Como podemos ajudar</h2>
+      </div>
+
+      <div class="service-grid">
+        <article class="service-card reveal">
+          <span class="service-index">01</span>
+          <div class="service-icon">
+            <svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="4" width="18" height="13" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
+          </div>
+          <h3>Web Design</h3>
+          <p>Sites modernos, profissionais, responsivos e pensados para transformar visitantes em oportunidades.</p>
+          <a href="#contato" class="service-link whatsapp-link" data-wa-msg="web-design">Saiba mais
+            <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </a>
+        </article>
+
+        <article class="service-card reveal">
+          <span class="service-index">02</span>
+          <div class="service-icon">
+            <svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 17l6-6 4 4 8-8"/><path d="M15 7h6v6"/></svg>
+          </div>
+          <h3>Tráfego Pago</h3>
+          <p>Estratégias e campanhas de anúncios focadas em gerar alcance, oportunidades e crescimento para empresas.</p>
+          <a href="#contato" class="service-link whatsapp-link" data-wa-msg="trafego-pago">Saiba mais
+            <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </a>
+        </article>
+      </div>
+    </section>
+
+    <!-- ============ FILOSOFIA / RESULTADOS ============ -->
+    <section class="section philosophy">
+      <div class="philosophy-inner reveal">
+        <h2 class="section-title philosophy-title">
+          Design que chama atenção.<br>
+          <span class="text-accent">Estratégia que gera oportunidades.</span>
+        </h2>
+        <p class="philosophy-text">
+          A LeadUp une Web Design e Tráfego Pago para construir uma presença digital pensada para transformar atenção em oportunidades comerciais.
+        </p>
+      </div>
+    </section>
+
+    <!-- ============ PORTFÓLIO ============ -->
+    <section id="portfolio" class="section portfolio">
+      <div class="section-head reveal">
+        <p class="eyebrow">Portfólio</p>
+        <h2 class="section-title">Projetos que falam por nós.</h2>
+        <p class="section-lead">Conheça alguns dos projetos desenvolvidos pela LeadUp.</p>
+      </div>
+
+      <div class="portfolio-grid" id="portfolio-grid"><!-- injected by main.js --></div>
+    </section>
+
+    <!-- ============ SOBRE ============ -->
+    <section id="sobre" class="section about">
+      <div class="about-grid">
+        <div class="about-copy reveal" data-reveal="left">
+          <p class="eyebrow">Sobre a LeadUp</p>
+          <h2 class="section-title">Mais do que presença digital.</h2>
+          <p class="about-text">
+            A LeadUp nasceu para ajudar empresas a se posicionarem melhor no digital através de duas frentes essenciais: Web Design e Tráfego Pago.
+          </p>
+          <p class="about-text">
+            Buscamos unir design, estratégia, performance e experiência do usuário em cada projeto. O objetivo não é simplesmente criar um site bonito — é construir uma presença digital profissional e utilizar estratégias de tráfego para gerar oportunidades reais.
+          </p>
         </div>
-        <div class="card">
-          <h3>🎆 Fonte Luminosa</h3>
-          <p>Ficam fixos no chão e liberam jatos coloridos de faíscas por vários segundos.</p>
-        </div>
-        <div class="card">
-          <h3>💥 Bombas</h3>
-          <p>Explodem em grandes formações de luz e cor, muito usadas em shows pirotécnicos.</p>
-        </div>
-        <div class="card">
-          <h3>🌟 Traça / Morteiro</h3>
-          <p>Lançados de tubos, sobem alto e se abrem em grandes círculos coloridos no céu.</p>
+        <div class="about-pillars reveal" data-reveal="right">
+          <div class="pillar">
+            <span class="pillar-mark">01</span>
+            <h3>Design</h3>
+            <p>Interfaces claras, modernas e alinhadas à identidade da marca.</p>
+          </div>
+          <div class="pillar">
+            <span class="pillar-mark">02</span>
+            <h3>Estratégia</h3>
+            <p>Planejamento orientado a objetivos de negócio, não apenas estética.</p>
+          </div>
+          <div class="pillar">
+            <span class="pillar-mark">03</span>
+            <h3>Performance</h3>
+            <p>Campanhas e páginas construídas para converter e escalar.</p>
+          </div>
+          <div class="pillar">
+            <span class="pillar-mark">04</span>
+            <h3>Experiência</h3>
+            <p>Cada ponto de contato pensado sob a perspectiva do usuário.</p>
+          </div>
         </div>
       </div>
     </section>
 
-    <section id="curiosidades" class="section">
-      <h2>Curiosidades</h2>
-      <ul class="fun-facts">
-        <li>Os fogos de artifício foram inventados na China há mais de 2000 anos.</li>
-        <li>As cores vêm de diferentes sais metálicos: estrôncio (vermelho), bário (verde), cobre (azul) e sódio (amarelo).</li>
-        <li>O som da explosão pode levar alguns segundos a mais para chegar aos ouvidos, dependendo da distância.</li>
-        <li>A cor azul é considerada uma das mais difíceis de produzir com perfeição.</li>
-      </ul>
-    </section>
-
-    <section id="seguranca" class="section alt">
-      <h2>Dicas de Segurança</h2>
-      <div class="cards">
-        <div class="card">
-          <h3>👀 Distância Segura</h3>
-          <p>Mantenha sempre uma distância segura ao acender ou observar fogos de artifício.</p>
-        </div>
-        <div class="card">
-          <h3>🚫 Nunca reacenda</h3>
-          <p>Se um fogo não acender corretamente, nunca tente reacendê-lo.</p>
-        </div>
-        <div class="card">
-          <h3>👨‍👩‍👧 Supervisão</h3>
-          <p>Crianças nunca devem manusear fogos de artifício sem supervisão de um adulto.</p>
-        </div>
-        <div class="card">
-          <h3>🧯 Água por perto</h3>
-          <p>Tenha sempre um balde de água ou extintor próximo ao usar fogos.</p>
-        </div>
+    <!-- ============ CTA FINAL ============ -->
+    <section class="section cta">
+      <div class="cta-inner reveal">
+        <h2 class="section-title">Vamos transformar o seu negócio?</h2>
+        <p class="cta-text">
+          Conte para a LeadUp sobre o seu projeto e descubra como podemos ajudar sua empresa a crescer no digital.
+        </p>
+        <a href="#" class="btn btn-primary btn-lg whatsapp-link" data-wa-msg="comecar-projeto">
+          <span>Começar meu projeto</span>
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </a>
       </div>
     </section>
 
-    <section id="contato" class="section">
-      <h2>Contato</h2>
-      <p>Quer saber mais sobre shows pirotécnicos e eventos com fogos de artifício?</p>
-      <form class="contact-form">
-        <input type="text" placeholder="Seu nome" required>
-        <input type="email" placeholder="Seu e-mail" required>
-        <textarea placeholder="Sua mensagem" rows="4" required></textarea>
-        <button type="submit" class="btn">Enviar Mensagem</button>
-      </form>
+    <!-- ============ CONTATO ============ -->
+    <section id="contato" class="section contact">
+      <div class="contact-grid">
+        <div class="contact-info reveal" data-reveal="left">
+          <p class="eyebrow">Contato</p>
+          <h2 class="section-title">LEADUP</h2>
+          <p class="contact-services">Web Design &nbsp;•&nbsp; Tráfego Pago</p>
+          <a href="#" class="contact-whatsapp whatsapp-link" data-wa-msg="ola-geral">
+            <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M17.5 14.4c-.3-.1-1.7-.9-2-1-.3-.1-.5-.1-.7.1-.2.3-.7 1-.9 1.2-.2.2-.3.2-.6.1-.3-.1-1.3-.5-2.4-1.5-.9-.8-1.5-1.8-1.7-2.1-.2-.3 0-.5.1-.6.1-.1.3-.3.4-.5.1-.1.2-.3.3-.5.1-.2 0-.4 0-.5C10 9 9.4 7.6 9.2 7c-.2-.5-.4-.5-.6-.5h-.5c-.2 0-.5.1-.7.3-.2.3-.9.9-.9 2.2s.9 2.5 1.1 2.7c.1.2 1.9 3 4.7 4.1.7.3 1.2.5 1.6.6.7.2 1.3.2 1.8.1.5-.1 1.7-.7 1.9-1.3.2-.6.2-1.2.2-1.3-.1-.1-.3-.2-.6-.3zM12 2C6.5 2 2 6.5 2 12c0 1.9.5 3.6 1.4 5.1L2 22l5.1-1.3c1.4.8 3.1 1.3 4.9 1.3 5.5 0 10-4.5 10-10S17.5 2 12 2z"/></svg>
+            (11) 95913-4861
+          </a>
+        </div>
+
+        <form class="contact-form reveal" data-reveal="right" id="contact-form">
+          <div class="form-row">
+            <label>
+              <span>Nome</span>
+              <input type="text" name="nome" placeholder="Seu nome" required>
+            </label>
+            <label>
+              <span>Empresa</span>
+              <input type="text" name="empresa" placeholder="Nome da empresa">
+            </label>
+          </div>
+          <div class="form-row">
+            <label>
+              <span>WhatsApp</span>
+              <input type="tel" name="whatsapp" placeholder="(00) 00000-0000" required>
+            </label>
+            <label>
+              <span>Serviço de interesse</span>
+              <select name="servico">
+                <option value="Web Design">Web Design</option>
+                <option value="Tráfego Pago">Tráfego Pago</option>
+                <option value="Web Design + Tráfego Pago">Web Design + Tráfego Pago</option>
+              </select>
+            </label>
+          </div>
+          <label class="full">
+            <span>Mensagem</span>
+            <textarea name="mensagem" rows="4" placeholder="Conte um pouco sobre o seu projeto" required></textarea>
+          </label>
+          <button type="submit" class="btn btn-primary btn-lg btn-block">
+            <span>Enviar mensagem</span>
+            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </button>
+          <p class="form-note" id="form-note" role="status"></p>
+        </form>
+      </div>
     </section>
   </main>
 
-  <footer>
-    <p>&copy; 2026 Fogos & Cia - Todos os direitos reservados.</p>
-  </footer>
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <img src="assets/leadup-logo-header.png" alt="LEADUP" class="footer-logo">
+        <p>Web Design • Tráfego Pago</p>
+      </div>
 
-  <script src="script.js"></script>
+      <nav class="footer-links">
+        <a href="#inicio">Início</a>
+        <a href="#servicos">Serviços</a>
+        <a href="#portfolio">Portfólio</a>
+        <a href="#sobre">Sobre</a>
+        <a href="#contato">Contato</a>
+      </nav>
+
+      <div class="footer-contact">
+        <a href="#" class="whatsapp-link" data-wa-msg="ola-geral">WhatsApp: (11) 95913-4861</a>
+        <div class="footer-social">
+          <a href="#" aria-label="Instagram" class="social-placeholder">
+            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1"/></svg>
+          </a>
+          <a href="mailto:contato@leadup.com.br" aria-label="E-mail" class="social-placeholder">
+            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+    <p class="footer-copy">© <span id="footer-year"></span> LEADUP. Todos os direitos reservados.</p>
+  </footer>
+</div>
+
+<script type="module" src="js/main.js"></script>
 </body>
 </html>
