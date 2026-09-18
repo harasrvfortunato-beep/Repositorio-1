@@ -269,18 +269,133 @@ button { font: inherit; cursor: pointer; }
   min-width: 0;
 }
 
-.laptop-photo-wrap {
+.device {
   position: relative;
   width: 100%;
-  max-width: 520px;
+  max-width: 440px;
+  margin: 0 auto;
 }
 
-.laptop-photo {
-  display: block;
+.device-screen {
+  position: relative;
+  aspect-ratio: 16 / 10.5;
+  background: linear-gradient(160deg, #1c1c1c 0%, #050505 65%);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 15px 15px 3px 3px;
+  padding: 5.5% 6% 6.5%;
+  box-shadow:
+    0 45px 80px rgba(0, 0, 0, 0.55),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.03),
+    inset 0 1px 0 rgba(255, 255, 255, 0.07);
+  transform: perspective(1400px) rotateX(3deg);
+  transform-origin: bottom center;
+}
+
+.device-cam {
+  position: absolute;
+  top: 9px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.2);
+  box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.03);
+}
+
+.device-display {
+  position: relative;
   width: 100%;
-  height: auto;
-  border-radius: 18px;
-  box-shadow: 0 40px 90px rgba(0, 0, 0, 0.55), 0 12px 30px rgba(0, 0, 0, 0.4);
+  height: 100%;
+  border-radius: 2px;
+  overflow: hidden;
+  background: radial-gradient(130% 100% at 12% -10%, rgba(255, 255, 255, 0.06), transparent 60%);
+}
+
+.device-mark {
+  position: absolute;
+  top: 0;
+  right: 0;
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.device-text {
+  position: absolute;
+  left: 0;
+  bottom: 16%;
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+.device-text span {
+  font-size: 0.85rem;
+  font-style: italic;
+  font-weight: 400;
+  letter-spacing: 0.04em;
+  color: rgba(255, 255, 255, 0.3);
+}
+
+.device-line {
+  position: absolute;
+  left: 0;
+  bottom: 10%;
+  width: 30px;
+  height: 1px;
+  background: rgba(255, 255, 255, 0.22);
+}
+
+.device-hinge {
+  position: relative;
+  height: 7px;
+  margin: 0 4%;
+  background: linear-gradient(180deg, #030303, #161616 45%, #030303);
+  border-radius: 0 0 3px 3px;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.55);
+}
+.device-hinge::after {
+  content: '';
+  position: absolute;
+  top: 2px;
+  left: 6%;
+  right: 6%;
+  height: 1px;
+  background: rgba(255, 255, 255, 0.06);
+}
+
+.device-base {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 2.6;
+  background: linear-gradient(180deg, #212121 0%, #0b0b0b 75%);
+  clip-path: polygon(3% 0, 97% 0, 100% 100%, 0% 100%);
+  box-shadow: 0 22px 34px rgba(0, 0, 0, 0.45);
+}
+.device-keyboard {
+  position: absolute;
+  inset: 16% 9% 46% 9%;
+  border-radius: 2px;
+  background-image: repeating-linear-gradient(90deg, rgba(255, 255, 255, 0.05) 0 2px, transparent 2px 13px);
+  opacity: 0.55;
+}
+.device-trackpad {
+  position: absolute;
+  left: 50%;
+  bottom: 12%;
+  transform: translateX(-50%);
+  width: 22%;
+  height: 30%;
+  border: 1px solid rgba(255, 255, 255, 0.09);
+  border-radius: 4px;
+  background: rgba(255, 255, 255, 0.015);
+}
+
+.device-ground-shadow {
+  width: 72%;
+  height: 26px;
+  margin: 14px auto 0;
+  background: radial-gradient(ellipse, rgba(0, 0, 0, 0.55), transparent 72%);
 }
 
 
