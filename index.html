@@ -3,110 +3,168 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Fogos de Artifício - Magia no Céu</title>
+  <title>Moraes Pipas - Fogos de Artifício e Festas</title>
+  <meta name="description" content="Moraes Pipas: pipas, fogos de artifício, itens para chá revelação, casamentos e festas. Peça pelo WhatsApp.">
+  <link rel="icon" href="assets/logo.png">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-  <header class="hero">
+  <header class="topbar">
     <nav class="navbar">
-      <div class="logo">🎆 Fogos & Cia</div>
-      <ul class="nav-links">
-        <li><a href="#sobre">Sobre</a></li>
-        <li><a href="#tipos">Tipos</a></li>
-        <li><a href="#curiosidades">Curiosidades</a></li>
-        <li><a href="#seguranca">Segurança</a></li>
-        <li><a href="#contato">Contato</a></li>
+      <a href="#topo" class="logo-link">
+        <img src="assets/logo.png" alt="Moraes Pipas" class="logo-img">
+        <span class="logo-text">Moraes Pipas</span>
+      </a>
+
+      <button class="menu-toggle" id="menuToggle" aria-label="Abrir menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#catalogo">Catálogo</a></li>
+        <li><a href="#eventos">Eventos</a></li>
+        <li><a href="#avaliacoes">Avaliações</a></li>
+        <li><a href="#localizacao">Localização</a></li>
       </ul>
+
+      <a class="btn btn-whatsapp nav-whatsapp" id="navWhatsapp" target="_blank" rel="noopener">
+        <span class="ico-whatsapp"></span> WhatsApp
+      </a>
     </nav>
-    <canvas id="fireworks-canvas"></canvas>
-    <div class="hero-content">
-      <h1>Fogos de Artifício</h1>
-      <p>A arte de colorir o céu com luz, som e emoção</p>
-      <a href="#sobre" class="btn">Saiba Mais</a>
-    </div>
   </header>
 
-  <main>
-    <section id="sobre" class="section">
-      <h2>O que são Fogos de Artifício?</h2>
-      <p>
-        Fogos de artifício são dispositivos pirotécnicos utilizados para fins de entretenimento,
-        capazes de produzir efeitos visuais e sonoros no céu noturno. Feitos com pólvora e sais
-        metálicos que geram cores vibrantes ao serem queimados, eles são usados em celebrações
-        como Ano Novo, festas juninas, casamentos e eventos esportivos ao redor do mundo.
-      </p>
-    </section>
+  <main id="topo">
+    <section class="hero">
+      <div class="hero-inner">
+        <div class="rating-badge" id="ratingBadge">
+          <span class="stars">★★★★☆</span>
+          <span class="rating-value">4,4</span>
+          <span class="rating-label">no Google</span>
+        </div>
+        <div class="open-badge" id="openBadge">Verificando horário...</div>
 
-    <section id="tipos" class="section alt">
-      <h2>Tipos de Fogos</h2>
-      <div class="cards">
-        <div class="card">
-          <h3>🎇 Rojões</h3>
-          <p>Sobem ao céu com um assobio característico e explodem em um estampido sonoro.</p>
-        </div>
-        <div class="card">
-          <h3>🎆 Fonte Luminosa</h3>
-          <p>Ficam fixos no chão e liberam jatos coloridos de faíscas por vários segundos.</p>
-        </div>
-        <div class="card">
-          <h3>💥 Bombas</h3>
-          <p>Explodem em grandes formações de luz e cor, muito usadas em shows pirotécnicos.</p>
-        </div>
-        <div class="card">
-          <h3>🌟 Traça / Morteiro</h3>
-          <p>Lançados de tubos, sobem alto e se abrem em grandes círculos coloridos no céu.</p>
+        <h1>Tudo para sua festa terminar com chave de ouro</h1>
+        <p class="hero-subtitle">Pipas, fogos de artifício, chá revelação e itens para casamento. Peça direto pelo WhatsApp.</p>
+
+        <div class="search-wrap">
+          <input type="search" id="searchInput" placeholder="Buscar produto (ex: chuva de prata, chá revelação...)" aria-label="Buscar produto">
+          <span class="search-ico">🔍</span>
         </div>
       </div>
     </section>
 
-    <section id="curiosidades" class="section">
-      <h2>Curiosidades</h2>
-      <ul class="fun-facts">
-        <li>Os fogos de artifício foram inventados na China há mais de 2000 anos.</li>
-        <li>As cores vêm de diferentes sais metálicos: estrôncio (vermelho), bário (verde), cobre (azul) e sódio (amarelo).</li>
-        <li>O som da explosão pode levar alguns segundos a mais para chegar aos ouvidos, dependendo da distância.</li>
-        <li>A cor azul é considerada uma das mais difíceis de produzir com perfeição.</li>
-      </ul>
+    <section id="catalogo" class="section">
+      <h2>Catálogo</h2>
+      <p class="section-sub">Escolha a categoria e peça o produto direto no WhatsApp.</p>
+
+      <div class="category-pills" id="categoryPills"></div>
+
+      <div id="catalogContainer" class="catalog-container"></div>
+      <p id="emptyState" class="empty-state" hidden>Nenhum produto encontrado para essa busca.</p>
     </section>
 
-    <section id="seguranca" class="section alt">
-      <h2>Dicas de Segurança</h2>
-      <div class="cards">
-        <div class="card">
-          <h3>👀 Distância Segura</h3>
-          <p>Mantenha sempre uma distância segura ao acender ou observar fogos de artifício.</p>
-        </div>
-        <div class="card">
-          <h3>🚫 Nunca reacenda</h3>
-          <p>Se um fogo não acender corretamente, nunca tente reacendê-lo.</p>
-        </div>
-        <div class="card">
-          <h3>👨‍👩‍👧 Supervisão</h3>
-          <p>Crianças nunca devem manusear fogos de artifício sem supervisão de um adulto.</p>
-        </div>
-        <div class="card">
-          <h3>🧯 Água por perto</h3>
-          <p>Tenha sempre um balde de água ou extintor próximo ao usar fogos.</p>
-        </div>
-      </div>
-    </section>
+    <section id="eventos" class="section alt">
+      <h2>Orçamento para Eventos</h2>
+      <p class="section-sub">Chá revelação, casamento, aniversário ou formatura: conte pra gente e receba um orçamento rápido pelo WhatsApp.</p>
 
-    <section id="contato" class="section">
-      <h2>Contato</h2>
-      <p>Quer saber mais sobre shows pirotécnicos e eventos com fogos de artifício?</p>
-      <form class="contact-form">
-        <input type="text" placeholder="Seu nome" required>
-        <input type="email" placeholder="Seu e-mail" required>
-        <textarea placeholder="Sua mensagem" rows="4" required></textarea>
-        <button type="submit" class="btn">Enviar Mensagem</button>
+      <form id="eventForm" class="event-form">
+        <div class="form-row">
+          <label for="eventType">Tipo de evento</label>
+          <select id="eventType" required>
+            <option value="" disabled selected>Selecione</option>
+            <option value="Chá Revelação">Chá Revelação</option>
+            <option value="Casamento">Casamento</option>
+            <option value="Aniversário">Aniversário</option>
+            <option value="Formatura">Formatura</option>
+            <option value="Outro">Outro</option>
+          </select>
+        </div>
+
+        <div class="form-row">
+          <label for="eventDate">Data do evento</label>
+          <input type="date" id="eventDate">
+        </div>
+
+        <div class="form-row">
+          <label for="eventName">Seu nome</label>
+          <input type="text" id="eventName" placeholder="Nome completo" required>
+        </div>
+
+        <div class="form-row">
+          <label for="eventMessage">Detalhes (opcional)</label>
+          <textarea id="eventMessage" rows="3" placeholder="Ex: quantidade de convidados, local, cores desejadas..."></textarea>
+        </div>
+
+        <button type="submit" class="btn btn-whatsapp">
+          <span class="ico-whatsapp"></span> Pedir orçamento pelo WhatsApp
+        </button>
       </form>
+    </section>
+
+    <section id="avaliacoes" class="section">
+      <h2>Avaliações</h2>
+      <div class="reviews-summary">
+        <div class="reviews-score">
+          <span class="score-number">4,4</span>
+          <span class="stars">★★★★☆</span>
+          <span class="reviews-count">avaliações no Google</span>
+        </div>
+        <a id="googleReviewsLink" class="btn btn-outline" target="_blank" rel="noopener">Ver avaliações no Google</a>
+      </div>
+
+      <div class="reviews-grid" id="reviewsGrid">
+        <!-- ATENÇÃO: estes são textos de EXEMPLO/placeholder.
+             Substitua pelos comentários reais copiados do perfil do Google Meu Negócio da loja
+             antes de publicar o site, para não exibir avaliações falsas. -->
+        <blockquote class="review-card">
+          <p>"Atendimento rápido e produtos de qualidade. Recomendo!"</p>
+          <cite>— Cliente Google (exemplo, substituir por avaliação real)</cite>
+        </blockquote>
+        <blockquote class="review-card">
+          <p>"Comprei os itens para o chá revelação e ficou tudo perfeito."</p>
+          <cite>— Cliente Google (exemplo, substituir por avaliação real)</cite>
+        </blockquote>
+        <blockquote class="review-card">
+          <p>"Loja de confiança, sempre compro fogos de artifício aqui."</p>
+          <cite>— Cliente Google (exemplo, substituir por avaliação real)</cite>
+        </blockquote>
+      </div>
+    </section>
+
+    <section id="localizacao" class="section alt">
+      <h2>Onde estamos</h2>
+      <div class="location-grid">
+        <div class="location-info">
+          <p class="address" id="addressText">Endereço a confirmar</p>
+          <a id="routeLink" class="btn btn-outline" target="_blank" rel="noopener">Traçar rota no Google Maps</a>
+
+          <div class="social-links">
+            <a id="instagramLink" class="social-link" target="_blank" rel="noopener">📷 Instagram</a>
+            <a id="tiktokLink" class="social-link" target="_blank" rel="noopener">🎵 TikTok</a>
+          </div>
+        </div>
+        <div class="map-wrap">
+          <iframe
+            id="mapFrame"
+            title="Mapa Moraes Pipas"
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            allowfullscreen>
+          </iframe>
+        </div>
+      </div>
     </section>
   </main>
 
   <footer>
-    <p>&copy; 2026 Fogos & Cia - Todos os direitos reservados.</p>
+    <img src="assets/logo.png" alt="Moraes Pipas" class="footer-logo">
+    <p>&copy; <span id="year"></span> Moraes Pipas - Todos os direitos reservados.</p>
   </footer>
+
+  <a href="#" id="floatingWhatsapp" class="floating-whatsapp" target="_blank" rel="noopener" aria-label="Falar no WhatsApp">
+    <span class="ico-whatsapp"></span>
+  </a>
 
   <script src="script.js"></script>
 </body>
