@@ -3,110 +3,239 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Fogos de Artifício - Magia no Céu</title>
+  <title>Gustavo Laia — Web Design & Marketing Digital</title>
+  <meta name="description" content="Criação de sites, landing pages, tráfego pago, gestão de redes sociais e automação com IA. Atendimento 100% online.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-  <header class="hero">
-    <nav class="navbar">
-      <div class="logo">🎆 Fogos & Cia</div>
-      <ul class="nav-links">
-        <li><a href="#sobre">Sobre</a></li>
-        <li><a href="#tipos">Tipos</a></li>
-        <li><a href="#curiosidades">Curiosidades</a></li>
-        <li><a href="#seguranca">Segurança</a></li>
-        <li><a href="#contato">Contato</a></li>
-      </ul>
-    </nav>
-    <canvas id="fireworks-canvas"></canvas>
-    <div class="hero-content">
-      <h1>Fogos de Artifício</h1>
-      <p>A arte de colorir o céu com luz, som e emoção</p>
-      <a href="#sobre" class="btn">Saiba Mais</a>
+  <header class="header" id="header">
+    <div class="header-inner">
+      <a href="#inicio" class="logo">GUSTAVO LAIA</a>
+
+      <nav class="nav" id="nav">
+        <a href="#inicio" class="nav-link">Início</a>
+        <a href="#servicos" class="nav-link">Serviços</a>
+        <a href="#sobre" class="nav-link">Sobre o trabalho</a>
+        <a href="#contato" class="nav-link">Contato</a>
+      </nav>
+
+      <a class="btn btn-header" target="_blank" rel="noopener"
+         href="https://wa.me/551195934801?text=Ol%C3%A1%2C%20Gustavo!%20Vi%20seu%20site%20e%20gostaria%20de%20saber%20mais%20sobre%20seus%20servi%C3%A7os.">
+        <span>Fale comigo</span>
+        <svg viewBox="0 0 24 24" fill="none" class="icon-wa" aria-hidden="true">
+          <path d="M17.6 6.4A8.9 8.9 0 0 0 3.1 16.8L2 22l5.3-1.4A8.9 8.9 0 0 0 21 12.9a8.9 8.9 0 0 0-3.4-6.5Z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/>
+          <path d="M8.6 8.7c.2-.5.4-.5.6-.5h.5c.2 0 .4 0 .5.4.2.4.6 1.4.7 1.5.1.1.1.3 0 .4-.1.2-.2.3-.3.5-.1.1-.3.3-.1.6.2.3.8 1.2 1.7 1.9 1.1.9 2 1.2 2.3 1.3.3.1.5.1.6-.1.2-.2.7-.8.9-1 .2-.2.3-.2.6-.1.2.1 1.5.7 1.8.8.3.1.4.2.5.3 0 .2 0 .9-.3 1.3-.4.5-1.3 1-2.2 1-1.7 0-3.4-.9-4.6-2-1.3-1.1-2.3-2.5-2.7-3.9-.2-.6-.3-1.2 0-1.7Z" fill="currentColor"/>
+        </svg>
+      </a>
+
+      <button class="nav-toggle" id="navToggle" aria-label="Abrir menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
     </div>
   </header>
 
   <main>
-    <section id="sobre" class="section">
-      <h2>O que são Fogos de Artifício?</h2>
-      <p>
-        Fogos de artifício são dispositivos pirotécnicos utilizados para fins de entretenimento,
-        capazes de produzir efeitos visuais e sonoros no céu noturno. Feitos com pólvora e sais
-        metálicos que geram cores vibrantes ao serem queimados, eles são usados em celebrações
-        como Ano Novo, festas juninas, casamentos e eventos esportivos ao redor do mundo.
-      </p>
-    </section>
 
-    <section id="tipos" class="section alt">
-      <h2>Tipos de Fogos</h2>
-      <div class="cards">
-        <div class="card">
-          <h3>🎇 Rojões</h3>
-          <p>Sobem ao céu com um assobio característico e explodem em um estampido sonoro.</p>
+    <section class="hero" id="inicio">
+      <div class="hero-inner">
+        <div class="hero-copy reveal">
+          <p class="eyebrow">WEB DESIGN • MARKETING DIGITAL</p>
+          <h1 class="hero-title">Seu negócio merece uma presença digital à altura.</h1>
+          <p class="hero-sub">Criação de sites, estratégias digitais e tráfego pago para transformar sua presença online em resultados.</p>
+
+          <div class="hero-ctas">
+            <a class="btn btn-primary" target="_blank" rel="noopener"
+               href="https://wa.me/551195934801?text=Ol%C3%A1%2C%20Gustavo!%20Vi%20seu%20site%20e%20gostaria%20de%20saber%20mais%20sobre%20seus%20servi%C3%A7os.">
+              <svg viewBox="0 0 24 24" fill="none" class="icon-wa" aria-hidden="true">
+                <path d="M17.6 6.4A8.9 8.9 0 0 0 3.1 16.8L2 22l5.3-1.4A8.9 8.9 0 0 0 21 12.9a8.9 8.9 0 0 0-3.4-6.5Z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/>
+                <path d="M8.6 8.7c.2-.5.4-.5.6-.5h.5c.2 0 .4 0 .5.4.2.4.6 1.4.7 1.5.1.1.1.3 0 .4-.1.2-.2.3-.3.5-.1.1-.3.3-.1.6.2.3.8 1.2 1.7 1.9 1.1.9 2 1.2 2.3 1.3.3.1.5.1.6-.1.2-.2.7-.8.9-1 .2-.2.3-.2.6-.1.2.1 1.5.7 1.8.8.3.1.4.2.5.3 0 .2 0 .9-.3 1.3-.4.5-1.3 1-2.2 1-1.7 0-3.4-.9-4.6-2-1.3-1.1-2.3-2.5-2.7-3.9-.2-.6-.3-1.2 0-1.7Z" fill="currentColor"/>
+              </svg>
+              <span>Falar comigo</span>
+            </a>
+            <a class="btn btn-ghost" href="#servicos">
+              <span>Conhecer serviços</span>
+              <svg viewBox="0 0 24 24" fill="none" class="icon-arrow" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </a>
+          </div>
+
+          <div class="hero-tag">
+            <span class="tag-line"></span>
+            <p>NEGÓCIOS REAIS<br>RESULTADOS REAIS</p>
+          </div>
         </div>
-        <div class="card">
-          <h3>🎆 Fonte Luminosa</h3>
-          <p>Ficam fixos no chão e liberam jatos coloridos de faíscas por vários segundos.</p>
-        </div>
-        <div class="card">
-          <h3>💥 Bombas</h3>
-          <p>Explodem em grandes formações de luz e cor, muito usadas em shows pirotécnicos.</p>
-        </div>
-        <div class="card">
-          <h3>🌟 Traça / Morteiro</h3>
-          <p>Lançados de tubos, sobem alto e se abrem em grandes círculos coloridos no céu.</p>
+
+        <div class="hero-visual reveal">
+          <div class="laptop">
+            <div class="laptop-screen">
+              <span class="laptop-mark">G.</span>
+              <div class="screen-glow"></div>
+              <div class="screen-text">
+                <span>IDEIAS</span>
+                <span>ESTRATÉGIA</span>
+                <span>RESULTADOS</span>
+              </div>
+              <div class="screen-line"></div>
+            </div>
+            <div class="laptop-base">
+              <div class="laptop-notch"></div>
+            </div>
+            <div class="laptop-shadow"></div>
+          </div>
+
+          <div class="visual-side">
+            <span class="tag-line"></span>
+            <p>ESTRATÉGIA<br>DESIGN<br>RESULTADOS</p>
+          </div>
         </div>
       </div>
     </section>
 
-    <section id="curiosidades" class="section">
-      <h2>Curiosidades</h2>
-      <ul class="fun-facts">
-        <li>Os fogos de artifício foram inventados na China há mais de 2000 anos.</li>
-        <li>As cores vêm de diferentes sais metálicos: estrôncio (vermelho), bário (verde), cobre (azul) e sódio (amarelo).</li>
-        <li>O som da explosão pode levar alguns segundos a mais para chegar aos ouvidos, dependendo da distância.</li>
-        <li>A cor azul é considerada uma das mais difíceis de produzir com perfeição.</li>
-      </ul>
+    <section class="services" id="servicos">
+      <div class="section-head reveal">
+        <p class="eyebrow center">SERVIÇOS</p>
+        <h2>Como posso ajudar seu negócio</h2>
+        <p class="section-sub">Soluções digitais pensadas para fortalecer sua presença online.</p>
+      </div>
+
+      <div class="cards">
+        <article class="card reveal">
+          <div class="card-icon">
+            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="3" y="4" width="18" height="12" rx="1.5" stroke="currentColor" stroke-width="1.4"/><path d="M8 20h8M12 16v4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>
+          </div>
+          <h3>Criação de Sites</h3>
+          <p>Sites modernos, profissionais e responsivos, desenvolvidos para apresentar sua empresa e transformar visitantes em clientes.</p>
+          <span class="card-arrow"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+        </article>
+
+        <article class="card reveal">
+          <div class="card-icon">
+            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="8" stroke="currentColor" stroke-width="1.4"/><circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="1.4"/><circle cx="12" cy="12" r="0.8" fill="currentColor"/></svg>
+          </div>
+          <h3>Landing Pages</h3>
+          <p>Páginas estratégicas criadas para campanhas, produtos e serviços, com foco em gerar contatos e conversões.</p>
+          <span class="card-arrow"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+        </article>
+
+        <article class="card reveal">
+          <div class="card-icon">
+            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 20V10M11 20V4M18 20v-7" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>
+          </div>
+          <h3>Tráfego Pago</h3>
+          <p>Planejamento, criação e gerenciamento de campanhas para alcançar as pessoas certas e aumentar as oportunidades para o seu negócio.</p>
+          <span class="card-arrow"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+        </article>
+
+        <article class="card reveal">
+          <div class="card-icon">
+            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="4" y="4" width="16" height="16" rx="4" stroke="currentColor" stroke-width="1.4"/><circle cx="12" cy="12" r="3.5" stroke="currentColor" stroke-width="1.4"/><circle cx="16.6" cy="7.4" r="0.9" fill="currentColor"/></svg>
+          </div>
+          <h3>Gestão de Redes Sociais</h3>
+          <p>Estratégias e gerenciamento para fortalecer a presença da sua marca nas redes sociais e manter uma comunicação profissional com seu público.</p>
+          <span class="card-arrow"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+        </article>
+
+        <article class="card reveal">
+          <div class="card-icon">
+            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="5" y="8" width="14" height="11" rx="2" stroke="currentColor" stroke-width="1.4"/><path d="M12 8V5m-3 0h6" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/><circle cx="9" cy="13.5" r="1.1" fill="currentColor"/><circle cx="15" cy="13.5" r="1.1" fill="currentColor"/></svg>
+          </div>
+          <h3>Automação e IA</h3>
+          <p>Soluções utilizando automação e inteligência artificial para otimizar processos, melhorar o atendimento e tornar seu negócio mais eficiente.</p>
+          <span class="card-arrow"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+        </article>
+      </div>
     </section>
 
-    <section id="seguranca" class="section alt">
-      <h2>Dicas de Segurança</h2>
-      <div class="cards">
-        <div class="card">
-          <h3>👀 Distância Segura</h3>
-          <p>Mantenha sempre uma distância segura ao acender ou observar fogos de artifício.</p>
+    <section class="differential" id="sobre">
+      <div class="section-head reveal">
+        <p class="eyebrow center">DIFERENCIAL</p>
+        <h2>Mais do que presença digital. Estratégia.</h2>
+      </div>
+
+      <div class="differential-list reveal">
+        <div class="diff-item">
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 3h12l3 5-9 13L3 8l3-5Z" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round"/><path d="M3 8h18M9 3l3 5 3-5M12 8l-3 13m3-13 3 13" stroke="currentColor" stroke-width="1.1" stroke-linejoin="round"/></svg>
+          <p>Design<br>profissional</p>
         </div>
-        <div class="card">
-          <h3>🚫 Nunca reacenda</h3>
-          <p>Se um fogo não acender corretamente, nunca tente reacendê-lo.</p>
+        <div class="diff-item">
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 20V11M10 20V4M16 20v-7M4 20h16" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <p>Estratégia<br>orientada a resultados</p>
         </div>
-        <div class="card">
-          <h3>👨‍👩‍👧 Supervisão</h3>
-          <p>Crianças nunca devem manusear fogos de artifício sem supervisão de um adulto.</p>
+        <div class="diff-item">
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="8" r="3.4" stroke="currentColor" stroke-width="1.3"/><path d="M5 20c1.2-4 4-6 7-6s5.8 2 7 6" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg>
+          <p>Soluções<br>personalizadas</p>
         </div>
-        <div class="card">
-          <h3>🧯 Água por perto</h3>
-          <p>Tenha sempre um balde de água ou extintor próximo ao usar fogos.</p>
+        <div class="diff-item">
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M7 17a4.2 4.2 0 0 1-.6-8.4A5.5 5.5 0 0 1 17 8.2 3.8 3.8 0 0 1 17 17H7Z" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round"/></svg>
+          <p>Atendimento<br>online</p>
+        </div>
+        <div class="diff-item">
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M13 3 5 13h5l-1 8 8-10h-5l1-8Z" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round"/></svg>
+          <p>Tecnologia e<br>inteligência artificial</p>
         </div>
       </div>
     </section>
 
-    <section id="contato" class="section">
-      <h2>Contato</h2>
-      <p>Quer saber mais sobre shows pirotécnicos e eventos com fogos de artifício?</p>
-      <form class="contact-form">
-        <input type="text" placeholder="Seu nome" required>
-        <input type="email" placeholder="Seu e-mail" required>
-        <textarea placeholder="Sua mensagem" rows="4" required></textarea>
-        <button type="submit" class="btn">Enviar Mensagem</button>
-      </form>
+    <section class="cta" id="contato">
+      <div class="cta-inner reveal">
+        <div class="cta-copy">
+          <p class="eyebrow">VAMOS CONVERSAR?</p>
+          <h2>Vamos colocar sua empresa no próximo nível?</h2>
+          <p class="cta-sub">Se você precisa de um site profissional, mais presença digital ou estratégias para atrair novos clientes, vamos conversar.</p>
+        </div>
+
+        <div class="cta-action">
+          <a class="btn btn-primary btn-large" target="_blank" rel="noopener"
+             href="https://wa.me/551195934801?text=Ol%C3%A1%2C%20Gustavo!%20Vi%20seu%20site%20e%20gostaria%20de%20saber%20mais%20sobre%20seus%20servi%C3%A7os.">
+            <svg viewBox="0 0 24 24" fill="none" class="icon-wa" aria-hidden="true">
+              <path d="M17.6 6.4A8.9 8.9 0 0 0 3.1 16.8L2 22l5.3-1.4A8.9 8.9 0 0 0 21 12.9a8.9 8.9 0 0 0-3.4-6.5Z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/>
+              <path d="M8.6 8.7c.2-.5.4-.5.6-.5h.5c.2 0 .4 0 .5.4.2.4.6 1.4.7 1.5.1.1.1.3 0 .4-.1.2-.2.3-.3.5-.1.1-.3.3-.1.6.2.3.8 1.2 1.7 1.9 1.1.9 2 1.2 2.3 1.3.3.1.5.1.6-.1.2-.2.7-.8.9-1 .2-.2.3-.2.6-.1.2.1 1.5.7 1.8.8.3.1.4.2.5.3 0 .2 0 .9-.3 1.3-.4.5-1.3 1-2.2 1-1.7 0-3.4-.9-4.6-2-1.3-1.1-2.3-2.5-2.7-3.9-.2-.6-.3-1.2 0-1.7Z" fill="currentColor"/>
+            </svg>
+            <span>Falar com Gustavo</span>
+            <svg viewBox="0 0 24 24" fill="none" class="icon-arrow" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+          <p class="cta-note">Atendimento 100% online</p>
+        </div>
+      </div>
     </section>
+
   </main>
 
-  <footer>
-    <p>&copy; 2026 Fogos & Cia - Todos os direitos reservados.</p>
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <p class="footer-logo">GUSTAVO LAIA</p>
+        <p class="footer-tagline">Web Design • Tráfego Pago • Marketing Digital</p>
+      </div>
+
+      <div class="footer-contact">
+        <div>
+          <span class="footer-label">WhatsApp</span>
+          <a href="https://wa.me/551195934801?text=Ol%C3%A1%2C%20Gustavo!%20Vi%20seu%20site%20e%20gostaria%20de%20saber%20mais%20sobre%20seus%20servi%C3%A7os." target="_blank" rel="noopener">(11) 95934-801</a>
+        </div>
+        <div>
+          <span class="footer-label">Instagram</span>
+          <a href="https://instagram.com/gustavollaia.ads" target="_blank" rel="noopener">@gustavollaia.ads</a>
+        </div>
+      </div>
+
+      <div class="footer-tag">
+        <span class="tag-line"></span>
+        <p>IDEIAS<br>ESTRATÉGIA<br>RESULTADOS</p>
+      </div>
+    </div>
   </footer>
+
+  <a class="whatsapp-float" target="_blank" rel="noopener" aria-label="Falar no WhatsApp"
+     href="https://wa.me/551195934801?text=Ol%C3%A1%2C%20Gustavo!%20Vi%20seu%20site%20e%20gostaria%20de%20saber%20mais%20sobre%20seus%20servi%C3%A7os.">
+    <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+      <path d="M17.6 6.4A8.9 8.9 0 0 0 3.1 16.8L2 22l5.3-1.4A8.9 8.9 0 0 0 21 12.9a8.9 8.9 0 0 0-3.4-6.5Z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/>
+      <path d="M8.6 8.7c.2-.5.4-.5.6-.5h.5c.2 0 .4 0 .5.4.2.4.6 1.4.7 1.5.1.1.1.3 0 .4-.1.2-.2.3-.3.5-.1.1-.3.3-.1.6.2.3.8 1.2 1.7 1.9 1.1.9 2 1.2 2.3 1.3.3.1.5.1.6-.1.2-.2.7-.8.9-1 .2-.2.3-.2.6-.1.2.1 1.5.7 1.8.8.3.1.4.2.5.3 0 .2 0 .9-.3 1.3-.4.5-1.3 1-2.2 1-1.7 0-3.4-.9-4.6-2-1.3-1.1-2.3-2.5-2.7-3.9-.2-.6-.3-1.2 0-1.7Z" fill="currentColor"/>
+    </svg>
+  </a>
 
   <script src="script.js"></script>
 </body>
