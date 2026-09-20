@@ -76,6 +76,8 @@
 
   /* ---------- Revelação suave ao entrar na tela ---------- */
 
+  document.documentElement.classList.add('reveal-ready');
+
   var revealables = document.querySelectorAll('.reveal');
   var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
