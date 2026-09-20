@@ -1,102 +1,100 @@
-const canvas = document.getElementById('fireworks-canvas');
-const ctx = canvas.getContext('2d');
+/* Gustavo Laia — interações da página */
 
-function resizeCanvas() {
-  canvas.width = canvas.offsetWidth;
-  canvas.height = canvas.offsetHeight;
-}
-resizeCanvas();
-window.addEventListener('resize', resizeCanvas);
+(function () {
+  'use strict';
 
-const colors = ['#ff4d6d', '#ffd60a', '#4cc9f0', '#80ffdb', '#f72585', '#ffffff'];
+  var header = document.getElementById('header');
+  var nav = document.getElementById('nav');
+  var toggle = document.getElementById('menuToggle');
+  var whats = document.getElementById('whatsFloat');
+  var navLinks = Array.prototype.slice.call(document.querySelectorAll('.nav-link'));
+  var sections = navLinks
+    .map(function (link) { return document.querySelector(link.getAttribute('href')); })
+    .filter(Boolean);
 
-class Particle {
-  constructor(x, y, color) {
-    this.x = x;
-    this.y = y;
-    this.color = color;
-    const angle = Math.random() * Math.PI * 2;
-    const speed = Math.random() * 4 + 1;
-    this.vx = Math.cos(angle) * speed;
-    this.vy = Math.sin(angle) * speed;
-    this.alpha = 1;
-    this.gravity = 0.03;
+  /* ---------- Menu mobile ---------- */
+
+  function closeMenu() {
+    nav.classList.remove('open');
+    toggle.setAttribute('aria-expanded', 'false');
+    toggle.setAttribute('aria-label', 'Abrir menu');
+    document.body.classList.remove('nav-open');
   }
 
-  update() {
-    this.vy += this.gravity;
-    this.x += this.vx;
-    this.y += this.vy;
-    this.alpha -= 0.012;
-  }
-
-  draw() {
-    ctx.save();
-    ctx.globalAlpha = Math.max(this.alpha, 0);
-    ctx.fillStyle = this.color;
-    ctx.beginPath();
-    ctx.arc(this.x, this.y, 2, 0, Math.PI * 2);
-    ctx.fill();
-    ctx.restore();
-  }
-}
-
-class Firework {
-  constructor(x, y) {
-    this.x = x;
-    this.y = y;
-    this.particles = [];
-    const color = colors[Math.floor(Math.random() * colors.length)];
-    const count = 40 + Math.floor(Math.random() * 30);
-    for (let i = 0; i < count; i++) {
-      this.particles.push(new Particle(x, y, color));
-    }
-  }
-
-  update() {
-    this.particles.forEach(p => p.update());
-    this.particles = this.particles.filter(p => p.alpha > 0);
-  }
-
-  draw() {
-    this.particles.forEach(p => p.draw());
-  }
-
-  isDone() {
-    return this.particles.length === 0;
-  }
-}
-
-let fireworks = [];
-
-function launchFirework() {
-  const x = Math.random() * canvas.width;
-  const y = Math.random() * canvas.height * 0.6;
-  fireworks.push(new Firework(x, y));
-}
-
-function animate() {
-  ctx.fillStyle = 'rgba(11, 12, 30, 0.25)';
-  ctx.fillRect(0, 0, canvas.width, canvas.height);
-
-  fireworks.forEach(fw => {
-    fw.update();
-    fw.draw();
+  toggle.addEventListener('click', function () {
+    var open = nav.classList.toggle('open');
+    toggle.setAttribute('aria-expanded', String(open));
+    toggle.setAttribute('aria-label', open ? 'Fechar menu' : 'Abrir menu');
+    document.body.classList.toggle('nav-open', open);
   });
 
-  fireworks = fireworks.filter(fw => !fw.isDone());
-
-  requestAnimationFrame(animate);
-}
-
-setInterval(launchFirework, 900);
-animate();
-
-const form = document.querySelector('.contact-form');
-if (form) {
-  form.addEventListener('submit', (e) => {
-    e.preventDefault();
-    alert('Mensagem enviada! Entraremos em contato em breve. 🎆');
-    form.reset();
+  nav.addEventListener('click', function (event) {
+    if (event.target.closest('a')) closeMenu();
   });
-}
+
+  document.addEventListener('keydown', function (event) {
+    if (event.key === 'Escape') closeMenu();
+  });
+
+  window.addEventListener('resize', function () {
+    if (window.innerWidth > 920) closeMenu();
+  });
+
+  /* ---------- Header + botão flutuante conforme rolagem ---------- */
+
+  function onScroll() {
+    var y = window.scrollY || window.pageYOffset;
+    header.classList.toggle('scrolled', y > 24);
+    whats.classList.toggle('visible', y > 420);
+    highlightNav(y);
+  }
+
+  function highlightNav(y) {
+    var offset = y + window.innerHeight * 0.35;
+    var current = sections[0];
+
+    sections.forEach(function (section) {
+      if (section.offsetTop <= offset) current = section;
+    });
+
+    navLinks.forEach(function (link) {
+      link.classList.toggle('active', current && link.getAttribute('href') === '#' + current.id);
+    });
+  }
+
+  var ticking = false;
+  window.addEventListener('scroll', function () {
+    if (ticking) return;
+    ticking = true;
+    window.requestAnimationFrame(function () {
+      onScroll();
+      ticking = false;
+    });
+  }, { passive: true });
+
+  onScroll();
+
+  /* ---------- Revelação suave ao entrar na tela ---------- */
+
+  var revealables = document.querySelectorAll('.reveal');
+  var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  if (reduceMotion || !('IntersectionObserver' in window)) {
+    revealables.forEach(function (el) { el.classList.add('in'); });
+  } else {
+    var observer = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (!entry.isIntersecting) return;
+        entry.target.classList.add('in');
+        observer.unobserve(entry.target);
+      });
+    }, { rootMargin: '0px 0px -12% 0px', threshold: 0.12 });
+
+    revealables.forEach(function (el) { observer.observe(el); });
+  }
+
+  /* ---------- Ano no rodapé ---------- */
+
+  var year = document.getElementById('year');
+  if (year) year.textContent = String(new Date().getFullYear());
+})();
