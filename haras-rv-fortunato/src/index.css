@@ -1,0 +1,73 @@
+@import "tailwindcss";
+
+@theme {
+  --font-serif: "Cormorant Garamond", Georgia, "Times New Roman", serif;
+  --font-sans: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
+
+  --color-musgo-50: #f1f3ea;
+  --color-musgo-100: #dfe4d0;
+  --color-musgo-300: #9aa77a;
+  --color-musgo-500: #5c6a3d;
+  --color-musgo-700: #3f4a2c;
+  --color-musgo-900: #262d1a;
+
+  --color-areia-50: #fbf8f2;
+  --color-areia-100: #f4ede0;
+  --color-areia-200: #e9dfcb;
+  --color-areia-300: #d9c9a8;
+
+  --color-couro-500: #8a5e3b;
+  --color-couro-700: #6b4529;
+  --color-couro-900: #3a2618;
+
+  --color-dourado-300: #e6cf92;
+  --color-dourado-500: #c9a45c;
+  --color-dourado-700: #8f6f2e;
+
+  --color-tinta: #2a2419;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    @apply bg-areia-50 font-sans text-tinta antialiased;
+  }
+  h1, h2, h3, h4 {
+    @apply font-serif;
+    text-wrap: balance;
+  }
+  :focus-visible {
+    outline: 3px solid var(--color-dourado-500);
+    outline-offset: 3px;
+    border-radius: 6px;
+  }
+}
+
+/* Revelação suave ao rolar (controlada pelo componente <Reveal />) */
+.reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.8s cubic-bezier(0.22, 1, 0.36, 1), transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+  transition-delay: var(--reveal-delay, 0ms);
+}
+.reveal.is-visible {
+  opacity: 1;
+  transform: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
