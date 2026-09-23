@@ -5,6 +5,7 @@ import { Reveal } from "../components/Reveal";
 import { SectionTitle } from "../components/SectionTitle";
 import { destaques, passos, site } from "../data/site";
 import { useSeo } from "../hooks/useSeo";
+import { asset } from "../lib/asset";
 
 const escolhas = [
   {
@@ -41,7 +42,7 @@ export default function Home() {
       {/* 1. Hero */}
       <section className="relative isolate flex min-h-[92svh] items-end overflow-hidden rounded-b-[2.5rem] sm:rounded-b-[4rem]">
         <img
-          src="/images/hero.svg"
+          src={asset("/images/hero.svg")}
           alt="Cavaleiro montado em um cavalo em uma trilha de terra entre árvores"
           className="absolute inset-0 -z-10 h-full w-full object-cover"
           fetchPriority="high"
@@ -88,7 +89,7 @@ export default function Home() {
                 to={c.to}
                 className="group relative isolate flex aspect-[4/5] flex-col justify-end overflow-hidden rounded-[2rem] p-7 sm:aspect-[3/4] md:aspect-[3/4.4]"
               >
-                <img src={c.imagem} alt={c.alt} loading="lazy" className="absolute inset-0 -z-10 h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-105" />
+                <img src={asset(c.imagem)} alt={c.alt} loading="lazy" className="absolute inset-0 -z-10 h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-105" />
                 <div className="absolute inset-0 -z-10 bg-gradient-to-t from-couro-900/90 via-couro-900/30 to-transparent" aria-hidden="true" />
                 <span className="mb-4 grid h-14 w-14 place-items-center rounded-2xl bg-areia-50/90 text-3xl" aria-hidden="true">
                   {c.emoji}
@@ -156,7 +157,7 @@ export default function Home() {
         <div className="mx-auto grid max-w-7xl items-center gap-10 overflow-hidden rounded-[2.5rem] bg-areia-100 lg:grid-cols-2">
           <Reveal className="h-full">
             <img
-              src="/images/como-chegar.svg"
+              src={asset("/images/como-chegar.svg")}
               alt="Estrada de terra entre árvores levando até o haras"
               loading="lazy"
               className="h-72 w-full object-cover sm:h-96 lg:h-full lg:min-h-[28rem]"

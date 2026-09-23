@@ -1,4 +1,5 @@
 import type { ReactNode } from "react";
+import { asset } from "../lib/asset";
 
 type Props = {
   imagem: string;
@@ -15,7 +16,7 @@ export function Card({ imagem, imagemAlt, children, selo, aspecto = "aspect-[4/3
     <article className={`group flex h-full flex-col overflow-hidden rounded-[1.75rem] bg-white shadow-[0_1px_0_rgba(42,36,25,0.06),0_20px_40px_-24px_rgba(42,36,25,0.35)] ring-1 ring-areia-200 ${className}`}>
       <div className={`relative overflow-hidden ${aspecto}`}>
         <img
-          src={imagem}
+          src={asset(imagem)}
           alt={imagemAlt}
           loading="lazy"
           className="h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-[1.04]"

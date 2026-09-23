@@ -7,6 +7,7 @@ import { PageHero } from "../components/PageHero";
 import { Reveal } from "../components/Reveal";
 import { animais, tiposAnimais, type Animal, type TipoAnimal } from "../data/animais";
 import { useSeo } from "../hooks/useSeo";
+import { asset } from "../lib/asset";
 
 export default function Animais() {
   useSeo({
@@ -67,7 +68,7 @@ function DetalheAnimal({ animal }: { animal: Animal }) {
   return (
     <div className="grid md:grid-cols-[1.3fr_1fr]">
       <div className="bg-areia-100 p-3 sm:p-4">
-        <img src={atual.src} alt={atual.alt} className="aspect-[4/3] w-full rounded-[1.5rem] object-cover" />
+        <img src={asset(atual.src)} alt={atual.alt} className="aspect-[4/3] w-full rounded-[1.5rem] object-cover" />
         <div className="mt-3 flex gap-3" role="group" aria-label="Escolher foto">
           {animal.fotos.map((f, i) => (
             <button
@@ -78,7 +79,7 @@ function DetalheAnimal({ animal }: { animal: Animal }) {
               aria-pressed={i === foto}
               className={`overflow-hidden rounded-xl ring-2 transition ${i === foto ? "ring-dourado-500" : "opacity-70 ring-transparent hover:opacity-100"}`}
             >
-              <img src={f.src} alt="" className="h-16 w-20 object-cover sm:h-20 sm:w-24" />
+              <img src={asset(f.src)} alt="" className="h-16 w-20 object-cover sm:h-20 sm:w-24" />
             </button>
           ))}
         </div>
